@@ -624,7 +624,6 @@ async def on_message(message: discord.Message):
 
 # ─── SLASH COMMAND — SETUP ───────────────────────────────────────────────────
 @bot.tree.command(name="setup", description="Configure le serveur Zona Gensy (une seule fois)")
-@app_commands.checks.has_permissions(administrator=True)
 async def setup_command(interaction: discord.Interaction):
     await interaction.response.send_message("🚀 Setup lancé ! Surveille les messages dans ce salon.", ephemeral=True)
     guild = interaction.guild
