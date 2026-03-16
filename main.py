@@ -626,10 +626,10 @@ async def on_message(message: discord.Message):
 @bot.tree.command(name="setup", description="Configure le serveur Zona Gensy (une seule fois)")
 @app_commands.checks.has_permissions(administrator=True)
 async def setup_command(interaction: discord.Interaction):
-    await interaction.response.defer(ephemeral=True)
+    await interaction.response.send_message("🚀 Setup lancé ! Surveille les messages dans ce salon.", ephemeral=True)
+    guild = interaction.guild
     channel = interaction.channel
-    await interaction.followup.send("🚀 Setup en cours... Ne ferme pas Discord.", ephemeral=True)
-    await setup_server(interaction.guild, channel)
+    asyncio.ensure_future(setup_server(guild, channel))
 
 
 # ─── LANCEMENT ───────────────────────────────────────────────────────────────
